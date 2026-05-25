@@ -20,6 +20,7 @@
 - Hiển thị các bài mới nhất
 - Comment
 - Đánh giá
+- Chia sẻ cho bạn bè
 ## Bảng xếp hạng
 - Lọc
 - Hiển thị danh sách
