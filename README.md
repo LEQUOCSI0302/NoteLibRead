@@ -30,3 +30,80 @@
 ## Avatar
 - Login và Register
 - nếu đăng ký thành công thì hiển thị avt người đăng nhập
+## Lô trình 
+Giai đoạn 1 — Nền tảng (1-2 tuần)
+├── Cài môi trường
+├── Hiểu Maven, Spring Boot là gì
+└── Tạo project đầu tiên chạy được "Hello World"
+
+Giai đoạn 2 — Database (1 tuần)
+├── Học SQL cơ bản (SELECT, INSERT, UPDATE, DELETE)
+├── Tạo database MySQL cho project
+└── Kết nối Spring Boot với MySQL qua JPA
+
+Giai đoạn 3 — CRUD cá nhân (2 tuần)
+├── Tạo bảng list_items
+├── Làm form thêm/sửa/xóa mục
+└── Hiển thị danh sách, tìm kiếm, lọc
+
+Giai đoạn 4 — Auth (1-2 tuần)
+├── Đăng ký / Đăng nhập
+├── Spring Security + Session
+└── Mỗi user chỉ thấy list của mình
+
+Giai đoạn 5 — Community (2 tuần)
+├── Đăng bài public
+├── Comment, like
+└── Feed bài của mọi người
+
+Giai đoạn 6 — Group Chat (2 tuần)
+├── Tạo/tham gia group
+├── Nhắn tin realtime (WebSocket)
+└── Hiển thị tin nhắn
+
+Giai đoạn 7 — Hoàn thiện & Deploy
+├── Giao diện đẹp hơn (Bootstrap)
+├── Test kỹ
+└── Deploy lên Railway (free)
+## Bước 1 — Cài đặt công cụ
+| Công cụ | Link | Mục đích |
+| :—– | :———- | :————– |
+| JDK 17| Dadoptium.net | Chạy Java |
+| IntelliJ IDEA Community | jetbrains.com| IDE miễn phí |
+| MySQL 8 | dev.mysql.com | Database |
+| MySQL Workbench | Cài kèm MySQL | Quản lý DB bằng UI |
+## Bước 2 — Tạo project Spring Boot
+Project   : Maven
+Language  : Java
+Version   : Spring Boot 3.x
+Packaging : Jar
+Java      : 21
+
+Dependencies cần thêm:
+  ✅ Spring Web
+  ✅ Thymeleaf
+  ✅ Spring Data JPA
+  ✅ MySQL Driver
+  ✅ Lombok
+## Bước 3 — Chạy thử "Hello World"
+``` // src/main/java/.../controller/HomeController.java
+@Controller
+public class HomeController {
+
+    @GetMapping("/")
+    public String home() {
+        return "index"; // trỏ đến file templates/index.html
+    }
+}
+```
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Media Notes</title></head>
+<body>
+    <h1>Chào mừng đến Media Notes! 🎬</h1>
+</body>
+</html>
+Nhấn Run → mở trình duyệt vào http://localhost:8080 → thấy chữ là thành công!
+## Bước 4 - Nghiên cứu đối thủ NGAY BÂY GIỜ
+
