@@ -78,8 +78,8 @@ Mở file `src/main/resources/application.properties` và chỉnh lại **userna
 spring.application.name=NoteLibs
 
 spring.datasource.url=jdbc:mysql://localhost:3306/note_lib_read?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
-spring.datasource.username=root
-spring.datasource.password=your_password
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
 
 # Hibernate KHÔNG tự tạo/sửa bảng — schema do Flyway quản lý
 spring.jpa.hibernate.ddl-auto=none
