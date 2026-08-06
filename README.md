@@ -28,57 +28,20 @@
 * Sau khi đăng nhập thành công, hiển thị Avatar người dùng trên thanh điều hướng (Navbar).
 
 ---
-## 🗺️ Lộ trình phát triển (Project Roadmap)
-> 💡 **Mẹo:** Các mục bên dưới là danh sách công việc (Task List). Khi hoàn thành mục nào, bạn có thể đánh dấu `[x]` để theo dõi tiến độ trực tiếp trên GitHub!
-
-### 🎯 Giai đoạn 1 — Nền tảng (1-2 tuần)
-- [x] Cài đặt môi trường phát triển (JDK 25, MySQL, IntelliJ IDEA).
-- [x] Tìm hiểu kiến thức nền tảng về Maven và Spring Boot.
-- [ ] Tạo project đầu tiên và chạy thử nghiệm "Hello World".
-
-### 🗄️ Giai đoạn 2 — Database (1 tuần)
-- [ ] Học và thực hành SQL cơ bản (`SELECT`, `INSERT`, `UPDATE`, `DELETE`).
-- [ ] Thiết kế và tạo database MySQL cho project.
-- [ ] Cấu hình kết nối Spring Boot với MySQL thông qua Spring Data JPA.
-
-### 📝 Giai đoạn 3 — CRUD Cá Nhân (2 tuần)
-- [ ] Thiết kế bảng dữ liệu `list_items`.
-- [ ] Xây dựng giao diện/API cho form Thêm / Sửa / Xóa mục công việc.
-- [ ] Làm tính năng hiển thị danh sách, tìm kiếm và lọc dữ liệu.
-
-### 🔐 Giai đoạn 4 — Auth & Phân Quyền (1-2 tuần)
-- [ ] Xây dựng tính năng Đăng ký / Đăng nhập.
-- [ ] Tích hợp **Spring Security** & Session/JWT để bảo mật.
-- [ ] Phân quyền dữ liệu: Mỗi user chỉ có quyền xem/quản lý list cá nhân của mình.
-
-### 🌐 Giai đoạn 5 — Community (2 tuần)
-- [ ] Phát triển tính năng đăng bài viết ở chế độ công khai (Public).
-- [ ] Làm tính năng Tương tác: Bình luận (Comment) và Thích (Like).
-- [ ] Xây dựng trang bảng tin (Feed) tổng hợp bài viết từ mọi người.
-
-### 💬 Giai đoạn 6 — Group Chat (2 tuần)
-- [ ] Thiết kế tính năng Tạo nhóm và Tham gia nhóm chat.
-- [ ] Xây dựng cơ chế nhắn tin thời gian thực (Realtime messaging) sử dụng **WebSocket**.
-- [ ] Xử lý lưu trữ và hiển thị lịch sử tin nhắn trong nhóm.
-
-### 🚀 Giai đoạn 7 — Hoàn thiện & Deploy
-- [ ] Tối ưu hóa giao diện người dùng đẹp và responsive hơn với **Bootstrap** (hoặc Tailwind CSS).
-- [ ] Tiến hành kiểm thử kỹ lưỡng (Unit Test / Integration Test) để tìm và sửa lỗi.
-- [ ] Triển khai ứng dụng (Deploy) lên nền tảng **Railway** (hoặc các dịch vụ Cloud tương đương).
 ## 🛠️ Hướng dẫn cài đặt & Khởi chạy nhanh
 ### Bước 1 — Chuẩn bị công cụ
 | Công cụ                 | Link | Mục đích |
 |:------------------------| :--- | :--- |
-| JDK 25                  | [adoptium.net](https://adoptium.net) | Chạy Java |
+| JDK 21                  | [adoptium.net](https://adoptium.net) | Chạy Java |
 | IntelliJ IDEA Community | [jetbrains.com](https://jetbrains.com) | IDE miễn phí |
 | MySQL 9.5.0             | [dev.mysql.com](https://dev.mysql.com) | Database |
 | MySQL Workbench         | Cài kèm MySQL | Quản lý DB bằng UI |
 ### Bước 2 — Cấu hình Project Spring Boot
 - Project   : Maven
 - Language  : Java
-- Version   : Spring Boot 4.0.6
+- Version   : Spring Boot 3.4.0
 - Packaging : Jar
-- Java      : 25
+- Java      : 21
 
 Dependencies cần thêm:
   - ✅ Spring Web
