@@ -12,6 +12,7 @@ Nền tảng web hướng tới trải nghiệm **cá nhân** là chính, cho ph
 | Spring Boot | 3.4.0 |
 | Build tool | Maven |
 | Database | MySQL 8.0+ |
+| Navicat | Navicat Premium |
 | Migration | Flyway (`flyway-core` + `flyway-mysql`) |
 | ORM | Spring Data JPA / Hibernate |
 | Template engine | Thymeleaf |
