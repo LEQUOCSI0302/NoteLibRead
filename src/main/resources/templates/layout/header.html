@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Header</title>
 </head>
 <header>
+    <!-- Logo -->
     <div class="logo-buffalo">
-        <img th:src="@{/images/logo.png}" alt="Logo" />
+        <a th:href="@{/}">
+            <img th:src="@{/images/logo.png}"  alt="Logo">
+        </a>
     </div>
-    <nav>
+
+    <!-- Thanh chuyển hướng đề mục -->
+    <nav class="nav_menu">
         <ul>
-            <li>Trang chủ</li>
-            <li>Top Tác Phẩm</li>
-            <li>Top Tác Giả</li>
-            <li>Thảo luận</li>
-            <li>Thể loại</li>
-            <li>Cống hiến</li>
-            <li>Đăng nhập</li>
+            <li><a th:href="@{/}">Trang chủ</a></li>
+            <li><a th:href="@{/top-works}">Top Tác Phẩm</a></li>
+            <li><a th:href="@{/top-authors}">Top Tác Giả</a></li>
+            <li><a th:href="@{/discussions}">Thảo luận</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Thể loại</a>
+                <ul class="dropdown-menu">
+                    <li th:each="genre : ${genres}">
+                        <a th:href="@{/genres/{slug}(slug=${genre.slug})}" th:text="${genre.name}">Genre</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a th:href="@{/contribute}">Cống hiến</a></li>
+            <li><a th:href="@{/login}">Đăng nhập</a></li>
         </ul>
     </nav>
 </header>
