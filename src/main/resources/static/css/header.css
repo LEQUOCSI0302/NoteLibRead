@@ -1,0 +1,113 @@
+:root {
+    /* Nền chính - màu giấy vintage */
+    --paper: #F3E5D0;
+
+    /* Nền phụ - thẻ/card sáng hơn */
+    --card: #FFF8ED;
+
+    /* Màu thương hiệu chính - nâu đỏ đậm */
+    --brand: #7A4A2B;
+
+    /* Màu chữ chính - nâu đen */
+    --ink: #4A2E1D;
+
+    /* Màu chữ phụ - nâu xám */
+    --ink-soft: #8A6E56;
+
+    /* Màu nhấn vàng - đồng/thỏi vàng */
+    --gold: #BB862E;
+
+    /* Màu vàng nhạt - hover, viền nhẹ */
+    --gold-soft: #EAD9B8;
+
+    /* Màu cảnh báo/CTA - đỏ gạch */
+    --red: #A13D2A;
+
+    /* Màu viền, divider - be xám */
+    --line: #D8C6A8;
+}
+/*
+Reset CSS
+ */
+*{
+margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/*
+    Chỉnh cho hình ảnh bên trái còn các đề mục bên phải
+    - Căn giữa các đề mục
+    Cho header full viền
+ */
+header{
+    width: 100%;
+    display: flex;
+    justify-content:   space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 2rem;
+    height: 80px;
+    background-color: var(--brand);
+}
+/*
+xử lý hình ảnh
+chỉnh lại kích thước
+*/
+.logo-buffalo img{
+    height: 60px;
+    width: auto;
+}
+/*
+loại bỏ các mục chấm ở trước mỗi thành phần trong danh sách
+ */
+.nav_menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/*
+Chỉnh cho các đề mục nằm ngang
+ */
+.nav_menu >ul{
+    display: flex;
+    gap: 2rem; /* khoảng cách giữa các đề mục */
+    align-items: center;
+}
+/*
+Chỉnh cho các đề mục trong danh sách đều màu trắng
+loại bỏ gạch dưới mỗi đề mục
+ */
+.nav_menu li a {
+    color: var(--card);
+    text-decoration: none;
+}
+/*
+Hover màu cho các đề mục
+ */
+.nav_menu li a:hover{
+    color: var(--gold);
+}
+/*
+bỏ dấu chấm cho các dropdown của thể loại
+chỉnh dropdown không hiển thị khi chưa hover vào thể loại
+ */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/*
+Chỉnh cho dropdown hiển thị khi hover vào thể loại
+Hiển thị dưới dạng lưới
+ */
+.dropdown:hover .dropdown-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
