@@ -6,33 +6,80 @@
     <title>Header</title>
 </head>
 <header>
+    <div class="header-top">
     <!-- Logo -->
-    <div class="logo-buffalo">
-        <a th:href="@{/}">
-            <img th:src="@{/images/logo.png}"  alt="Logo">
-        </a>
-    </div>
+        <div class="logo-buffalo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}"  alt="Logo">
+            </a>
+        </div>
 
     <!-- Thanh chuyển hướng đề mục -->
-    <nav class="nav_menu">
-        <ul>
-            <li><a th:href="@{/}">Trang chủ</a></li>
-            <li><a th:href="@{/top-works}">Top Tác Phẩm</a></li>
-            <li><a th:href="@{/top-authors}">Top Tác Giả</a></li>
-            <li><a th:href="@{/discussions}">Thảo luận</a></li>
+        <nav class="nav_menu">
+            <ul>
+                <li><a th:href="@{/}">Trang chủ</a></li>
+                <li><a th:href="@{/top-works}">Top Tác Phẩm</a></li>
+                <li><a th:href="@{/top-authors}">Top Tác Giả</a></li>
+                <li><a th:href="@{/discussions}">Thảo luận</a></li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Thể loại</a>
-                <ul class="dropdown-menu">
-                    <li th:each="genre : ${genres}">
-                        <a th:href="@{/genres/{slug}(slug=${genre.slug})}" th:text="${genre.name}">Genre</a>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle">Thể loại</a>
+                    <ul class="dropdown-menu">
+                        <li th:each="genre : ${genres}">
+                            <a th:href="@{/genres/{slug}(slug=${genre.slug})}" th:text="${genre.name}">Genre</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a th:href="@{/contribute}">Cống hiến</a></li>
+                <li><a th:href="@{/login}">Đăng nhập</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Header tìm kiếm duới -->
+    <div class="header-bottom">
+        <div class ="search-box">
+            <input type="text" placeholder="Tìm kiếm..."/>
+            <button>
+                <i class ="icon-search">
+                    🔍
+                </i>
+            </button>
+        </div>
+        <div class="header-utils">
+            <button class="btn-darkmode" onclick ="toggleDarkMode()" type="button" id="darkModeBtn">🌙</button>
+
+            <!-- Phần language có thêm danh sách để người khác lựa chọn -->
+            <div class = "lang-dropdown">
+                <button class = "lang-toggle" onclick = "toggleLang()" type="button">🌐</button>
+                <ul class = "lang-menu" id = "langMenu">
+                    <!-- Tiếng việt -->
+                    <li>
+                        <a th:href="@{''(lang=vi)}">
+                            <span class="lang-icon">🇻🇳</span>
+                            <span>Tiếng Việt</span>
+                        </a>
+                    </li>
+                    <!-- Tiếng anh -->
+                    <li>
+                        <a th:href="@{''(lang=en)}">
+                            <span class="lang-icon">🇺🇸</span>
+                            <span>English</span>
+                        </a>
+                    </li>
+                    <!-- Tiếng nhật -->
+                    <li>
+                        <a th:href="@{''(lang=ja)}">
+                            <span class="lang-icon">🇯🇵</span>
+                            <span>日本語</span>
+                        </a>
                     </li>
                 </ul>
-            </li>
 
-            <li><a th:href="@{/contribute}">Cống hiến</a></li>
-            <li><a th:href="@{/login}">Đăng nhập</a></li>
-        </ul>
-    </nav>
+            </div>
+        </div>
+
+    </div>
+    <script th:src="@{/js/header.js}"></script>
 </header>
 </html>

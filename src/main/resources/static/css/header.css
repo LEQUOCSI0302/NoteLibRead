@@ -26,6 +26,16 @@
     /* Màu viền, divider - be xám */
     --line: #D8C6A8;
 }
+body.dark-mode {
+    --paper: #1a1a2e;
+    --card: #2a2a3e;
+    --brand: #5a3a1b;
+    --ink: #e0d5c8;
+    --ink-soft: #b0a090;
+    --gold: #d4a04a;
+    --gold-soft: #3a3a4e;
+    --line: #3a3a4e;
+}
 /*
 Reset CSS
  */
@@ -40,20 +50,44 @@ body{
 }
 
 /*
-    Chỉnh cho hình ảnh bên trái còn các đề mục bên phải
-    - Căn giữa các đề mục
-    Cho header full viền
+    Chỉnh header 100% chiều ngang, không có margin và padding, nền màu thương hiệu
+    Chỉnh lại header 2 tầng
+    Full viền cho header
  */
 header{
     width: 100%;
-    display: flex;
-    justify-content:   space-between;
-    align-items: center;
     margin: 0;
-    padding: 0 2rem;
-    height: 80px;
+    padding: 0;
     background-color: var(--brand);
 }
+/*
+Header ở trên
+ */
+.header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;padding: 0.5rem 2rem;
+    background-color: var(--brand);
+}
+
+/*
+Header ở dưới
+Chỉnh cho darkmode và lang về bên phải còn thanh tìm kiếm về giữa
+ */
+.header-bottom{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background-color: var(--gold-soft);  /* hoặc màu khác */
+    border-top: 1px solid var(--line);
+
+}
+
+/*
+ CSS PHẦN TRÊN HEADER
+ */
 /*
 xử lý hình ảnh
 chỉnh lại kích thước
@@ -110,4 +144,133 @@ Hiển thị dưới dạng lưới
 .dropdown:hover .dropdown-menu {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+/*
+ CSS PHẦN DƯỚI HEADER
+ */
+/*
+Chỉnh lại kích thước của thanh input
+chỉnh vị trí của từng phần
+ */
+.search-box{
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    width: 100%;
+    margin: 0;
+}
+/*
+Màu của thanh input và button, bo tròn 2 đầu
+ */
+.search-box input{
+    flex: 1;
+    padding: 8px 16px;
+    border: 1px solid var(--line);
+    border-radius: 20px 0 0 20px;
+    background-color: var(--card);
+}
+/*
+CHỉnh sửa liên quan đến button tìm kiếm
+ */
+.search-box button{
+    padding: 8px 16px;
+    border:none;
+    background-color: var(--brand);
+    color: white;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+}
+/*
+Chỉnh sửa liên quan đến các tiện ích ở bên phải header dưới
+ */
+.header-utils{
+    display: flex;
+    gap: 1rem;
+}
+/*
+cSS cho phần darkmode
+ */
+.btn-darkmode{
+
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    transition: transform 0.2s;
+}
+/*
+hover cho phần darkmode
+ */
+.btn-darkmode:hover{
+    transform: scale(1.1);
+}
+/*
+css PHẦN language
+ */
+.lang-dropdown{
+    position: relative;
+}
+/*
+Chỉnh button của language toggle, bỏ nền và viền, chỉnh kích thước font và con trỏ chuột
+ */
+.lang-toggle{
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+}
+/*
+Chỉnh danh sách ngôn ngữ, ẩn mặc định, hiển thị khi toggle
+ */
+.lang-menu{
+    display:none;
+    position: absolute;
+    top: calc(100% + 10px); /* chỉnh cho nó ngay ở dưới nút*/
+    right: 0; /* cho danh sách ngay sát phía phải icon */
+    background-color: var(--gold);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--gold-soft);
+    list-style: none;
+    padding: 8px 0;
+    min-width: 200px;
+    z-index: 1000;
+}
+/*
+Chỉnh cho danh sách ngôn ngữ hiển thị khi toggle
+ */
+.lang-menu.show{
+    display: block;
+}
+/*
+chỉnh cho đề mục căn giữa, màu sắc, padding, font-size, hover background
+ */
+.lang-menu li a{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: var(--card);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+/*
+Chỉnh hover cho đề mục ngôn ngữ
+ */
+.lang-menu li a:hover{
+    background: var(--card);
+    color: var(--gold);
+}
+/*
+chỉnh icon nhỏ trong phần danh sách
+ */
+.lang-icon{
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
 }
