@@ -20,9 +20,18 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/images/**","/css/**","/js/**")
                         .permitAll()
-                        .requestMatchers("/","/login").permitAll()
+                        .requestMatchers("/","/login","/register").permitAll()
                         .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                ).logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
                 );
         return http.build();
     }

@@ -1,0 +1,286 @@
+:root {
+    /* Nền chính - màu giấy vintage */
+    --paper: #F3E5D0;
+
+    /* Nền phụ - thẻ/card sáng hơn */
+    --card: #FFF8ED;
+
+    /* Màu thương hiệu chính - nâu đỏ đậm */
+    --brand: #7A4A2B;
+
+    /* Màu chữ chính - nâu đen */
+    --ink: #4A2E1D;
+
+    /* Màu chữ phụ - nâu xám */
+    --ink-soft: #8A6E56;
+
+    /* Màu nhấn vàng - đồng/thỏi vàng */
+    --gold: #BB862E;
+
+    /* Màu vàng nhạt - hover, viền nhẹ */
+    --gold-soft: #EAD9B8;
+
+    /* Màu cảnh báo/CTA - đỏ gạch */
+    --red: #A13D2A;
+
+    /* Màu viền, divider - be xám */
+    --line: #D8C6A8;
+}
+body.dark-mode {
+    --paper: #1a1a2e;
+    --card: #2a2a3e;
+    --brand: #5a3a1b;
+    --ink: #e0d5c8;
+    --ink-soft: #b0a090;
+    --gold: #d4a04a;
+    --gold-soft: #3a3a4e;
+    --line: #3a3a4e;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--ink) 0%, #2E1A0F 100%);
+    color: var(--paper);
+    min-height: 100vh;
+}
+/* wrapper để giữ header - content- foooter */
+.login-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.login-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+/* Card đăng nhập chính */
+.login-card {
+    background-color: rgba(74, 46, 29, 0.96);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    max-width: 850px;
+    width: 100%;
+    overflow: hidden;
+}
+/* Cột trasi : form */
+.login-left{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-left h2{
+    margin: 0 0 24px 0;
+    font-size: 1.6rem;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.form-group{
+    margin-bottom: 18px;
+}
+.form-group label{
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color:var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.form-group input[type='text'],
+.form-group input[type='password']{
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--paper);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder{
+    color: var(--ink-soft);
+    opacity: 0.7;
+}
+.form-group input:focus{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(187, 134, 46, 0.2);
+}
+/*
+Check box ghi nhớ
+ */
+.remember-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+.remember-row label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-soft);
+    cursor: pointer;
+}
+.remember-row input[type="checkbox"]{
+    accent-color: var(--brand);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.remember-row a {
+    color: var(--gold-soft);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+.remember-row a:hover{
+    text-decoration: underline;
+    color:var(--gold);
+}
+/* Nút đăng nhập */
+
+.btn-login{
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--brand), #5C3A22);
+    color: var(--paper);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: filter 0.2s, transform 0.1s;
+}
+.btn-login:hover{
+    filter: brightness(1.15);
+}
+.btn-login:active{
+    transform: translateY(1px);
+}
+/* Nút đăng nhập bằng google */
+.oauth-separator {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+}
+
+.oauth-separator::before,
+.oauth-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background: var(--line);
+    opacity: 0.4;
+}
+
+.oauth-separator::before { left: 0; }
+.oauth-separator::after { right: 0; }
+
+.btn-oauth {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-oauth:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--gold);
+}
+
+/* Link đăng ký */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.register-link a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+/* Cột bên phải anime */
+.image-login-anime {
+    background: rgba(0, 0, 0, 0.15);
+    border-left: 1px solid rgba(216, 198, 168, 0.2);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.image-login-anime img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/*
+    Thong báo
+ */
+.alert {
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+.alert-danger {
+    background: rgba(161, 61, 42, 0.15);
+    color: #E08E7D;
+    border: 1px solid rgba(161, 61, 42, 0.3);
+}
+.alert-success {
+    background: rgba(46, 125, 50, 0.15);
+    color: #81C784;
+    border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-card { grid-template-columns: 1fr; max-width: 420px; }
+    .image-login-anime {
+        border-left: none;
+        border-top: 1px solid rgba(216, 198, 168, 0.2);
+        padding: 30px;
+        min-height: 200px;
+    }
+}

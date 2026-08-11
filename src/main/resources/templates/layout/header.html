@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
+
 </head>
 <header>
     <div class="header-top">
@@ -22,9 +23,9 @@
                 <li><a th:href="@{/top-authors}">Top Tác Giả</a></li>
                 <li><a th:href="@{/discussions}">Thảo luận</a></li>
 
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle">Thể loại</a>
-                    <ul class="dropdown-menu">
+                <li class="genre-dropdown">
+                  <a href="#" class="genre-dropdown-toggle">Thể loại</a>
+                    <ul class="genre-dropdown-menu" id = "genreMenu">
                         <li th:each="genre : ${genres}">
                             <a th:href="@{/genres/{slug}(slug=${genre.slug})}" th:text="${genre.name}">Genre</a>
                         </li>
@@ -32,18 +33,36 @@
                 </li>
 
                 <li><a th:href="@{/contribute}">Cống hiến</a></li>
-                <li><a th:href="@{/login}">Đăng nhập</a></li>
+                <!-- Nếu chưa đăng nhập --->
+                <li th:if ="${currentUser == null}">
+                    <a th:href="@{/login}">Đăng nhập</a></li>
+                <!-- Nếu đã đăng nhập -->
+                <li th:if ="${currentUser != null}" class = "user-dropdown">
+                    <a th:href="#" class = "user-toogle">
+                        <img th:src="currentUser.avatarUrl != null ? currentUser.avatarUrl : @{/images/default-avatar.png}" alt="Avatar"
+                             style="width: 32px; height: 32px; border-radius: 50%; vertical-align: middle;">
+                        <span th:text ="${currentUser.username}">
+                            Tên
+                        </span></a>
+                    <ul class="user-menu">
+                        <li><a th:href="@{/profile}">Hồ sơ</a></li>
+                        <li><a th:href="@{/settings}">Cài đặt</a></li>
+                        <li><a th:href="@{/logout}">Đăng xuất</a></li>
+
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
+
+
+
     <!-- Header tìm kiếm duới -->
     <div class="header-bottom">
         <div class ="search-box">
             <input type="text" placeholder="Tìm kiếm..."/>
             <button>
-                <i class ="icon-search">
-                    🔍
-                </i>
+                <i class="fa-solid fa-magnifying-glass" style="color: rgb(255, 255, 255);"></i>
             </button>
         </div>
         <div class="header-utils">
