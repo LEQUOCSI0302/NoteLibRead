@@ -47,6 +47,10 @@ margin: 0;
 body{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--ink) 0%, #2E1A0F 100%);
+    color: var(--paper);
+    min-height: 100vh;
 }
 
 /*
@@ -126,26 +130,96 @@ Hover màu cho các đề mục
 .nav_menu li a:hover{
     color: var(--gold);
 }
-/*
-bỏ dấu chấm cho các dropdown của thể loại
-chỉnh dropdown không hiển thị khi chưa hover vào thể loại
- */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.genre-dropdown {
+    position: relative;
 }
-/*
-Chỉnh cho dropdown hiển thị khi hover vào thể loại
-Hiển thị dưới dạng lưới
- */
-.dropdown:hover .dropdown-menu {
+/* Cầu nối liền mạch: chiếm khoảng trống giữa nút và menu */
+.genre-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 15px;  /* Cầu nối che khoảng cách */
+}
+.genre-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: auto;
+    right: 0;
+    background: var(--gold);
+    min-width: 500px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    list-style: none;
+
+    /* Grid 3 cột */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px 20px;
+
+    /* Ẩn mượt */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 1000;
 }
 
+/*
+chỉnh cho đề mục căn giữa, màu sắc, padding, font-size, hover background
+ */
+.genre-dropdown-menu li a{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: var(--card);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+
+/* Hiện khi hover vào cả nút lẫn cầu nối */
+.genre-dropdown:hover .genre-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+/*
+Chỉnh hover cho đề mục ngôn ngữ
+ */
+.genre-dropdown-menu li a:hover{
+    background: var(--card);
+    color: var(--gold);
+}
+/*
+Chỉnh phần avt
+ */
+.user-toogle{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+   object-fit: cover;
+    border: 2px solid var(--gold);
+
+}
+.user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--card);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,2);
+    list-style: none;
+    min-width: 150px;
+}
+.user-dropdown:hover .user-menu{
+    display: block;
+}
 /*
  CSS PHẦN DƯỚI HEADER
  */
