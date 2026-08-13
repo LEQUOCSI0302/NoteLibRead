@@ -38,9 +38,9 @@
                     <a th:href="@{/login}">Đăng nhập</a></li>
                 <!-- Nếu đã đăng nhập -->
                 <li th:if ="${currentUser != null}" class = "user-dropdown">
-                    <a th:href="#" class = "user-toogle">
-                        <img th:src="currentUser.avatarUrl != null ? currentUser.avatarUrl : @{/images/default-avatar.png}" alt="Avatar"
-                             style="width: 32px; height: 32px; border-radius: 50%; vertical-align: middle;">
+                    <a href="javascript:void(0)" class = "user-toogle" onclick="toggleUserMenu()">
+                        <img th:src="${currentUser.avatarUrl != null ? currentUser.avatarUrl : '/images/default-avt.jpg'}" alt="Avatar"
+                             class="user-avatar">
                         <span th:text ="${currentUser.username}">
                             Tên
                         </span></a>
@@ -48,7 +48,6 @@
                         <li><a th:href="@{/profile}">Hồ sơ</a></li>
                         <li><a th:href="@{/settings}">Cài đặt</a></li>
                         <li><a th:href="@{/logout}">Đăng xuất</a></li>
-
                     </ul>
                 </li>
             </ul>

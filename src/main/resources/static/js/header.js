@@ -1,3 +1,18 @@
+
+function toggleUserMenu() {
+    document.querySelector('.user-dropdown').classList.toggle('active');
+}
+
+// đóng khi bấm ra ngoài
+document.addEventListener('click', function (e) {
+    const dropdown = document.querySelector('.user-dropdown');
+    if (dropdown && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+    }
+});
+
+
+
 /*
     Toggle cho phần darkmode chuyển qua chuyển màu sáng và ngược lại
  */

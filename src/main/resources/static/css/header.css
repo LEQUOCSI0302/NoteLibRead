@@ -48,8 +48,6 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--ink) 0%, #2E1A0F 100%);
-    color: var(--paper);
     min-height: 100vh;
 }
 
@@ -199,27 +197,64 @@ Chỉnh hover cho đề mục ngôn ngữ
 /*
 Chỉnh phần avt
  */
-.user-toogle{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-   object-fit: cover;
-    border: 2px solid var(--gold);
+.user-toogle {
+    display: inline-flex;      /* thay vì inline mặc định */
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 6px; /* nới rộng ra hẳn, không còn ôm sát avatar */
+    border-radius: 999px;
+    border: 1px solid rgba(216, 198, 168, 0.25);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
 
+.user-toogle:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(216, 198, 168, 0.45);
+}
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;        /* chỉ áp riêng cho ảnh, ảnh luôn vuông 32x32 -> tròn hoàn hảo */
+    object-fit: cover;         /* ép ảnh vào khung tròn đúng tỉ lệ, không méo */
+    box-sizing: border-box;    /* nếu có thêm border, border tính vào trong 32px thay vì đội kích thước box ra ngoài làm lệch vuông */
+    display: block;
+    flex-shrink: 0;            /* chặn avatar bị bóp méo khi tên user dài, .user-toogle là flex */
 }
 .user-menu {
     display: none;
     position: absolute;
     right: 0;
-    background-color: var(--card);
+    background-color: var(--gold);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,2);
     list-style: none;
     min-width: 150px;
+    z-index: 1000;
 }
+
 .user-dropdown:hover .user-menu{
     display: block;
 }
+.user-menu li a{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: var(--card);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+.user-menu li a:hover{
+    background: var(--card);
+    color: var(--gold);
+}
+.user-menu { display: none; }
+.user-dropdown.active .user-menu { display: block; }
+
+
 /*
  CSS PHẦN DƯỚI HEADER
  */

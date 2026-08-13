@@ -1,0 +1,203 @@
+body{
+    background: linear-gradient(135deg, var(--ink) 0%, #2E1A0F 100%);
+}
+
+
+.register-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.register-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.register-card {
+    background-color: rgba(74, 46, 29, 0.96);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    max-width: 850px;
+    width: 100%;
+    overflow: hidden;
+    /* các item con (register-left / image-login-anime) mặc định của grid là
+       align-items: stretch -> 2 cột sẽ tự cao bằng nhau theo hàng, không cần set thêm gì */
+}
+
+.register-left {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-left h2 {
+    margin: 0 0 24px 0;
+    font-size: 1.6rem;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== FORM ĐĂNG KÝ — style lại thay vì dùng input mặc định ========== */
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.form-group input {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(216, 198, 168, 0.25);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 0.95rem;
+    color: var(--ink, #f1e6d8);
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: rgba(241, 230, 216, 0.4);
+}
+
+.form-group input:hover {
+    border-color: rgba(216, 198, 168, 0.45);
+}
+
+.form-group input:focus {
+    border-color: var(--gold);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(216, 168, 76, 0.18);
+}
+
+.field-error {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.85rem;
+    color: #E08E7D;
+}
+
+.terms-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.terms-row label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.terms-row input[type="checkbox"] {
+    accent-color: var(--brand);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.terms-row a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.terms-row a:hover {
+    text-decoration: underline;
+}
+
+/* nút đăng ký — thêm hover/active vì hiện chưa có hiệu ứng */
+.register-left .btn-register {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--brand), #5C3A22);
+    color: var(--paper);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.register-left .btn-register:hover {
+    filter: brightness(1.15);
+}
+
+.register-left .btn-register:active {
+    transform: translateY(1px);
+}
+
+.register-left .register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.register-left .register-link a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-left .register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========== CỘT ẢNH — lấp đầy đúng khung chứa ========== */
+.image-register-anime {
+    background: var(--brand);
+    border-left: 1px solid rgba(216, 198, 168, 0.2);
+    padding: 24px;             /* thêm chút đệm để ảnh không dính sát viền khi dùng contain */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-register-anime img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;       /* thay cover -> không còn crop mất nội dung ảnh nữa */
+    border-radius: 8px;
+    display: block;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .register-card {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .image-register-anime {
+        border-left: none;
+        border-top: 1px solid rgba(216, 198, 168, 0.2);
+        min-height: 220px;   /* bắt buộc phải có, vì ở mobile 2 cột tách thành 2 hàng riêng,
+                                 height:100% của ảnh sẽ không còn chỗ dựa (grid stretch chỉ hoạt động
+                                 khi 2 phần tử cùng 1 hàng) */
+    }
+}
