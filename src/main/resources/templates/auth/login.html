@@ -27,12 +27,9 @@
             <div class ="login-left">
                 <h2>Đăng nhập bằng tên tài khoản</h2>
 
-                <!-- Thông báo đăng nhập và đăng xuẩt -->
+                <!-- Thông báo đăng nhập sai -->
                 <div th:if = "${param.error}" class="alert alert-danger">
                     <i class="fa-solid fa-circle-exclamation"></i> Sai tên đăng nhập hoặc mật khẩu!
-                </div>
-                <div th:if = "${param.logout}" class="alert alert-success">
-                    <i class="fa-solid fa-check-circle"></i> Bạn đã đăng xuất thành công.
                 </div>
 
                 <!-- form đăng nhập chính -->
@@ -70,7 +67,7 @@
 
             <!-- Cột phẢI: qr PLACEHOLDER -->
             <div class = "image-login-anime">
-                <img th:src="@{/images/tiara_img_login.jpg}" alt="Tiara">
+                <img th:src="@{/images/tiara_login_image.png}" alt="Tiara">
             </div>
         </div>
     </div>

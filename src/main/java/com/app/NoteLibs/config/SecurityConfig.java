@@ -18,11 +18,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/images/**","/css/**","/js/**")
-                        .permitAll()
-                        .requestMatchers("/","/login","/register").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/images/**","/css/**","/js/**").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/top-works", "/top-authors",
+                                "/discussions", "/genres/**", "/contribute").permitAll()
                         .requestMatchers("/api/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/profile", "/settings").authenticated() // các trang thật sự cần login
+                        .anyRequest().permitAll() // hoặc .authenticated() tuỳ ý đồ
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -30,7 +32,7 @@ public class SecurityConfig {
                         .permitAll()
                 ).logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/?logout")
                         .permitAll()
                 );
         return http.build();

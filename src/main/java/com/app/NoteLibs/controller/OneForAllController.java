@@ -2,6 +2,7 @@ package com.app.NoteLibs.controller;
 
 import com.app.NoteLibs.model.Genre;
 import com.app.NoteLibs.model.User;
+import com.app.NoteLibs.security.CustomUserDetails;
 import com.app.NoteLibs.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,7 +26,10 @@ public class OneForAllController {
     public User currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated() && !"anonymousUser".equals(authentication.getPrincipal())) {
-           //
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof CustomUserDetails customUserDetails) {
+                return customUserDetails.getUser();
+            }
         }
         return null;
     }

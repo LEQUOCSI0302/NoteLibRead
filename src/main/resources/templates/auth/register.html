@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký
+    </title>
+    <!-- Đưa các css có liên qua đến header và footer ra home để nó chạy nguyên trang -->
+    <link rel="stylesheet" th:href="@{/css/register.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+<!-- Giao diện đăng ký -->
+<div class = "register-page-wrapper">
+    <!-- header -->
+    <div th:replace="layout/header :: header"></div>
+
+    <!-- chính -->
+    <div class ="register-container">
+        <div class ="register-card">
+
+            <!-- Bên trái : phần đăng ký -->
+            <div class ="register-left">
+                <h2>Đăng ký tài khoản</h2>
+
+                <!-- Lỗi chung từ backend -->
+                <div th:if="${errorMessage}" class="alert alert-danger">
+                    <i class="fa-solid fa-circle-exclamation"></i> <span th:text="${errorMessage}"></span>
+                </div>
+
+                <!-- form đăng ký chính -->
+                <form th:action="@{/register}" th:object="${user}"  method="post">
+                    <div class="form-group">
+                        <label for="username">Tên đăng ký hoặc email</label>
+                        <input id="username"  type="text" th:field="*{username}" placeholder="Nhập tên đăng ký hoặc email" required/>
+                        <!-- Lỗi field-specific -->
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" th:field="*{email}" placeholder="Nhập email" required />
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <input id="password" type="password" th:field="*{password}" placeholder="Nhập mật khẩu" required/>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Nhập lại mật khẩu</label>
+                        <input id="confirmPassword" type="password" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu" required />
+                        <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="field-error"></span>
+                    </div>
+
+                    <div class="terms-row">
+                        <label>
+                            <input type="checkbox" required />
+                            Tôi đồng ý với <a href="#">điều khoản sử dụng</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-register">Đăng ký</button>
+                </form>
+                <p class="register-link">
+                    Đã có tài khoản? <a th:href="@{/login}">Đăng nhập</a>
+                </p>
+            </div>
+
+            <!-- Cột phẢI: qr PLACEHOLDER -->
+            <div class = "image-register-anime">
+                <img th:src="@{/images/image-register.png}" alt="NukuYana">
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div th:insert="layout/footer :: footer"></div>
+</div>
+</body>
+</html>

@@ -237,7 +237,7 @@ Check box ghi nhớ
 }
 /* Cột bên phải anime */
 .image-login-anime {
-    background: rgba(0, 0, 0, 0.15);
+    background: var(--brand);
     border-left: 1px solid rgba(216, 198, 168, 0.2);
     padding: 40px;
     display: flex;
@@ -251,7 +251,7 @@ Check box ghi nhớ
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /*
@@ -267,11 +267,6 @@ Check box ghi nhớ
     background: rgba(161, 61, 42, 0.15);
     color: #E08E7D;
     border: 1px solid rgba(161, 61, 42, 0.3);
-}
-.alert-success {
-    background: rgba(46, 125, 50, 0.15);
-    color: #81C784;
-    border: 1px solid rgba(46, 125, 50, 0.3);
 }
 
 /* Responsive */
